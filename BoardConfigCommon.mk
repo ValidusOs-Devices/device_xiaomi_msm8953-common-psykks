@@ -110,11 +110,11 @@ TARGET_HW_DISK_ENCRYPTION := true
 ifeq ($(HOST_OS),linux)
   ifneq ($(TARGET_BUILD_VARIANT),eng)
     ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
       WITH_DEXPREOPT := true
     endif
   endif
 endif
-WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
 # Display
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
@@ -167,7 +167,7 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8953
 
 # Lineage Hardware
-#JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
+JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
 
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
@@ -201,6 +201,8 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_USE_SDCLANG := true
 
 # RIL
+ENABLE_VENDOR_RIL_SERVICE := true
+TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 TARGET_RIL_VARIANT := caf
 
 # Recovery
